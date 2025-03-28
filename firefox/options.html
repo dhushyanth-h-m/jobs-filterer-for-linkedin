@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Copyright 2023 Jonathan Kamens.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+  <head><title>Jobs Filterer for LinkedIn Options</title></head>
+  <body>
+    <h2>Jobs Filterer for LinkedIn Options</h2>
+    <p>(See extension documentation <a href="help.html">here</a>.
+      Please support continued development of this
+      extension <a href="help.html#support">here</a>.)</p>
+
+    <p><input type="checkbox" id="hideJobs"/>Hide filtered jobs
+      completely<br/>
+    <input type="checkbox" id="showChanges"/>Show
+      <a href="changes.html">changelog</a> on install/update</p>
+
+    <table>
+      <tr>
+        <td>
+          <p>Regular expressions (one per line) to tell LinkedIn to
+            filter based on JOB TITLES:</p>
+          <textarea id="titles" rows="10" cols="40"></textarea>
+        </td>
+        <td>
+          <p>...based on COMPANY NAMES:</p>
+          <textarea id="companies" rows="10" cols="40"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>...based on LOCATIONS:</p>
+          <textarea id="locations" rows="10" cols="40"></textarea>
+        </td>
+        <td>
+          <p>You can:</p>
+          <ul>
+            <li id="alt-s">type Alt-S or Option-S to save options
+              (equivalent to clicking the Save button);</li>
+            <li>write a regexp like &ldquo;/<em>regexp</em>/i&rdquo;
+              to make it case-insensitive;</li>
+            <li>prefix a regexp with "t:" in any of the preceding text
+              boxes to designate it as a title regexp (so you don't
+              have to keep moving between text fields);</li>
+            <li>"c:" same as above but for company regexps; and</li>
+            <li>"l:" same as above but for location regexps.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2>
+          <p>Specific jobs to filter, specified as
+            &ldquo;<em>title</em> // <em>company</em>
+            // <em>location</em>&rdquo; (add &ldquo;// private&rdquo;
+            at the end if the job should be hidden without telling
+            LinkedIn to filter based on that):</p>
+          <textarea id="jobs" rows="10" cols="100"></textarea>
+        </td>
+      </tr>
+    </table>
+    
+    <p><span id="status"></span>&nbsp;</p>
+    <p><button id="save">Save</button></p>
+
+    <p>Click <a href="backup.html" target="_blank">here</a> (after
+      saving any changes!) to display a flat representation of the
+      text boxes above that you can save into a local flie as a backup
+      in case your settings are lost or you want to restore the
+      current state later.</p>
+
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+Copyright 2023 Jonathan Kamens.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+  <head><title>Jobs Filterer for LinkedIn Help</title></head>
+  <body>
+    <div style="font-size: 150%;">
+    <h2>What Jobs Filterer for LinkedIn does and how to use it</h2>
+
+    <p><strong>NOTE:</strong>The author of this extension is not
+      affiliated with LinkedIn, and this extension is not provided or
+      supported by LinkedIn. I'm just a random guy trying to make life
+      easier for LinkedIn users.</p>
+
+    <p>(See extension changelog <a href="changes.html">here</a>.)</p>
+
+    <p>LinkedIn&rsquo;s &ldquo;recommended jobs&rdquo; and job search
+      functionality are pretty good at finding jobs you might be
+      interested in, but unfortunately they&rsquo;re pretty bad at
+      finding <em>only</em> jobs you might be interested in, i.e., they
+      show you many jobs you don&rsquo;t care about. Furthermore, although
+      there are buttons you can click to supposedly tell LinkedIn not
+      to show you a particular job again, it frequently ignores
+      this.</p>
+
+    <p>This extension&rsquo;s purpose is to allow you to improve the
+      quality of these lists of jobs by filtering out jobs you
+      don&rsquo;t want to see based on either jobs whose
+      &ldquo;don&rsquo;t show me this&rdquo; button you&rsquo;ve
+      clicked or on regular-expression (regexp) matches on the job
+      title, company name, or location.</p>
+
+    <p>The simplest way to use this extension is to tell LinkedIn not
+      to show you jobs by clicking on their buttons intended for that
+      purpose. LinkedIn won&rsquo;t necessarily obey that, but this
+      extension will: it&rsquo;ll add the job&rsquo;s title, company
+      name, and location to the &ldquo;Specific jobs&rdquo; list in
+      the extension's <a href="options.html">options page</a> and save
+      the options, and it&rsquo;ll be filtered out automatically from
+      then on. You may want to revisit the
+      <a href="options.html">options page</a> periodically and
+      clear out old jobs from the list so that it doesn&rsquo;t get
+      too long and slow things down. If you make a mistake and filter
+      out a job you actually want to keep seeing, you can remove it
+      from the list and click Save to undo the filtering.</p>
+
+    <p>In addition to being able to click on LinkedIn's button for
+      dismissing a job (the eye with a slash through it), this
+      extension adds a second button next to it &mdash; a white funnel
+      on a grey background, i.e., the extension's icon &mdash; which
+      you can click on to tell the extension that you never want to
+      see that job <em>without telling LinkedIn that</em>. Why would
+      you want to do that? If a job is a relatively good fit for you
+      but you still don't want to see it, e.g., because it's
+      not <em>quite</em> right or because you've already applied to
+      it, then you don't want to tell LinkedIn not to show it to you
+      anymore, because that might train LinkedIn's algorithm to show
+      you fewer jobs like that, which you don't want. Instead, just
+      tell this extension to hide it whenever it comes up, so LinkedIn
+      can keep popping it into your recommendations and search results
+      but you'll never see it.</p>
+
+    <p>In addition to filtering out specific jobs by clicking the
+      buttons, you can filter jobs by regexp match. To do that, enter
+      the regexp you want to filter with, one per line, in the text
+      boxes on the <a href="options.html">options page</a>, then click
+      Save. You can optionally enclose your regexp in slashes if you
+      want to specify the case-insensitive flag on it; in other words,
+      the regexp &ldquo;abc&rdquo; won't match &ldquo;Abc&rdquo;, but
+      &ldquo;/abc/i&rdquo; will.</p>
+
+    <p>Documenting how to write regexps is beyond the
+      scope of this help
+      text; <a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions"
+               target="_blank">here</a>
+      is one of the many online tutorials about this.</p>
+
+    <p>Normally this extension simulates clicking the buttons that
+      tell LinkedIn not to show you jobs again, but you still
+      see the jobs, greyed out, after it has done so. If you would like
+      to hide filtered jobs completely, check the &ldquo;Hide filtered
+      jobs completely&rdquo; checkbox (and remember to click the
+      &ldquo;Save&rdquo; button).</p>
+    
+    <p>Note that the options are saved in synchronized storage, so if
+      you have sync turned on, the options are synchronized
+      across all synced browser profiles.</p>
+
+    <h2>Example workflow</h2>
+
+    <p>Note that you can open the <a href="options.html">options
+      page</a> by clicking on the extension's icon. You'll probably
+      want to pin the extension icon to your toolbar for easy
+      access.</p>
+
+    <p>A common workflow for this extension is to keep
+      the <a href="options.html">options page</a> open in one browser
+      Window while you have LinkedIn open in another window next to
+      it. While reviewing a page of jobs, each time you come across
+      one that could have been filtered out, update your filters
+      appropriate in the extension options and Save the updated
+      filters.</p>
+
+    <h2><a name="support">Credits</a></h2>
+
+    <p>The author of this extension is not affiliated with LinkedIn,
+      and this extension is not provided or supported by LinkedIn. I'm
+      just a random guy trying to make life easier for LinkedIn
+      users.</p>
+
+    <p>This extension was written by Jonathan Kamens. If you find this
+      extension useful, you
+      can <a href="https://patreon.com/jikseclecticofferings">support
+      me on Patreon</a> or buy me a coffee
+      via <a href="https://paypal.me/JonathanKamens">PayPal</a>
+      or <a href="https://venmo.com/Jonathan-Kamens">Venmo</a>.</p>
+
+    <p>The source code for this extension lives
+      <a href="https://github.com/jikamens/jobs-filterer-for-linkedin"
+         target="_blank">here</a>.</p>
+        </div>
+  </body>
+</html>

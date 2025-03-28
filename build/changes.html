@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+Copyright 2023 Jonathan Kamens.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+  <head><title>Jobs Filterer for LinkedIn Changelog</title></head>
+  <body>
+    <p>(See extension documentation <a href="help.html">here</a>.
+      Please support continued development of this
+      extension <a href="help.html#support">here</a>.)</p>
+    <p><input type="checkbox" id="showChanges"/>Load this page when
+      the extension is updated</p>
+    <div style="font-size: 150%;">
+      <h2>Jobs Filterer for LinkedIn change history</h2>
+      <h3>Version 1.1</h3>
+
+      <p>The name of the extension has been changed to "Jobs Filterer
+        for LinkedIn" in the hope that this will satisfy trademark
+        concerns expressed to me by representatives of LinkedIn in the
+        form of forcing the add-on to be unpublished from the Chrome
+        Web Store under its previous name. Also, disclaimers have
+        been added spelling out explicitly that this add-on is not
+        affiliatd with LinkedIn.</p>
+
+      <h3>Version 1.0</h3>
+      <ul>
+        <li>The extension now asks for the permissions it needs if
+          they weren't granted automatically by the browser or the
+          user revoked them.</li>
+        <li>The Alt-S / Option-S key binding on the options page to
+          save the options has been disabled on Firefox because the
+          Firefox menu accelerators interfere with it and I've been
+          unable to find a workaround for that.</li>
+        <li>There is now a backup page linked to from the bottom of
+          the options page that you can open to view a flat
+          representation of your filter patterns so that you can save
+          them to a local file as a backup in case you need to restore
+          them later.</li>
+      </ul>
+      <h3>Version 0.9</h3>
+      <ul>
+        <li>You can now open the extension's options by clicking on
+          its toolbar icon.</li>
+        <li>The help page has been fixed so that it no longer says
+          "above" to refer to where the extension options are, and
+          instead links to the options page.</li>
+      </ul>
+      <h3>Version 0.8</h3>
+      <ul>
+        <li>LinkedIn changed the format of their pages again, so our
+          code needs to be modified again to accommodate their
+          changes.</li>
+      </ul>
+      <h3>Version 0.7</h3>
+      <ul>
+        <li>The extension now supports hiding specific jobs purely
+          within the extension, without telling LinkedIn you don't
+          want to see them. You should do this for jobs which are a
+          good fit for you but you don't want to see anymore, e.g.,
+          because you've already applied to them, so you don't
+          influence LinkedIn's algorithm not to show you similar jobs
+          in the future. To hide a job this way, click the funnel
+          button that the extension adds to jobs next to the eye with
+          the slash.</li>
+        <li>You can now type Alt-S (Option-S on macOS) on the options
+          page to save the options without moving focus from the text
+          field you're currently editing.</li>
+        <li>LinkedIn has changed the structure of the recommended jobs
+          / job search results pages for at least some users (they
+          appear to be rolling out this change gradually and not
+          everyone has it yet). This change attempts to handle the new
+          page format. If the extension suddenly stopped filtering
+          jobs for you on some pages, this is probably the fix for
+          that.</li>
+        <li>The extension now keeps paying attention to a job even
+          after you click its hide / unhide buttons. Previously once
+          you clicked hide and then unhide the extension would ignore
+          that job until you refreshed the page.</li>
+        <li>The delay between when you unhide a job and when it is
+          removed from the list of hidden jobs in the extension
+          options (if it's there) has been made considerably
+          shorter.</li>
+        <li>Case-insensitive regular expressions are now supported;
+          specify the regexp as "/regexp/i" to access this
+          functionality.</li>
+        <li>A race condition which sometimes caused some jobs not to
+          be filtered properly has been fixed.</li>
+        <li>A workaround has been implemented for a problem which was
+          causing the extension to stop filtering jobs when it was
+          updated in a running Chrome instance. <strong>Note:</strong>
+          if you have LinkedIn loaded in a tab when the extension is
+          updated in the background, you may still need to refresh
+          that page to get the extension working again, but unlike
+          before, you should no longer need to quit and restart Chrome
+          entirely.</li>
+        <li>Fixed a bug introduced in version 0.5 which caused the
+          extension to save changes when you clicked the
+          "Save" button on the options pag even when nothing was
+          changed.</li>
+      </ul>
+      <h3>Version 0.6</h3>
+      <ul>
+        <li>Fix: once any of the text boxes on the options page (i.e.,
+          the title, company and location regular expression boxes,
+          and the box listing specific filtered jobs) got to about
+          8,192 characters it could no longer be saved. The
+          implemention has been changed so now the only limit is about
+          100,000 characters for all of the text boxes put together,
+          which should be sufficient.</li>
+      </ul>
+      <h3>Version 0.5</h3>
+      <ul>
+        <li>Add this changelog page and make it open on install/update.</li>
+        <li>New feature: if you "Undo" a job hide, and that job is
+          listed in the extension options as having been explicitly
+          hidden by you, then it now gets removed from that list
+          automatically.</li>
+        <li>Add automatically filtered jobs to the list at the top
+          instead of the bottom, i.e., the list is now newest jobs
+          first, so if you have the options page opened when you hide
+          a job you'll see it show up at the top of the list.</li>
+        <li>When the user hides a job, check whether it would already
+          be filtered out by the currently configured regular
+          expressions (presumably because the user just edited them to
+          exclude it), and if so, don't add it to the list of
+          explicitly filtered jobs.</li>
+        <li>Fix automatic job filtering on click so that it works on
+          the job search page; previously it only worked on the
+          recommended jobs page.</li>
+        <li>Fix bug which could cause the extension, when trying to
+          hide a job on a company's page, to instead save it, i.e.,
+          add it to the user's saved jobs.</li>
+        <li>Move the extension help to a separate page.</li>
+        <li>Make changes to the "Hide filtered jobs completely"
+          checkbox on the options page save immediately instead of
+          waiting for the user to click the "Save" button.</li>
+        <li>Fix a bug which occasionally caused auto-filtered jobs to
+          fail to be saved and attempts to save options to fail with
+          the error, "This request exceeds the
+          MAX_WRITE_OPERATIONS_PER_MINUTE quota."</li>
+        <li>Implement some performance improvements.</li>
+      </ul>
+      <h3>Version 0.4</h3>
+      <p>(Version 0.4 was rightfully rejected by Google because it was
+        buggy so it was never published.)</p>
+      <h3>Version 0.3</h3>
+      <ul>
+        <li><strong>Filter jobs automatically when the user clicks the
+          hide button.</strong> You no longer have to edit regular
+          expressions in the extension options to hide jobs. Now when
+          you click the button to tell LinkedIn not to show you a job
+          anymore (the eye with the slash through it), the extension
+          remembers that automatically, and it subsequently hides the
+          job reliably even if LinkedIn doesn't.</li>
+        <li>Update the extension to accommodate changes in the format
+          of LinkedIn's website code.</li>
+      </ul>
+      <h3>Version 0.2</h3>
+      <ul>
+        <li>Add an example workflow to the documentation on the
+          options page.</li>
+      </ul>
+      <h3>Version 0.1</h3>
+      <ul>
+        <li>Initial release</li>
+      </ul>
+    </div>
+    <script src="changes.js"></script>
+  </body>
+</html>
